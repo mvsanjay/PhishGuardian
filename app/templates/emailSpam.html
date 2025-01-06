@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This website is developed for identifying the safety of URLs.">
+    <meta name="keywords" content="phishing url, phishing, cyber security, machine learning, classifier, python">
+    <meta name="author" content="VAIBHAV BICHAVE">
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link href="static/style.css" rel="stylesheet">
+    
+    <link href="static/styles.css" rel="stylesheet">
+    <title>SPAM EMAIL DETECTION</title>
+</head>
+
+<body class="error">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
+    <div class="container font-monospace">
+        <a href="/index" class="navbar-brand text-warning">PhishGuardian</a>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto" style="margin-left: 500px;">
+                <li class="nav-item">
+                    <a href="/index" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/urlPhishing" class="nav-link">URL Phishing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/emailSpam" class="nav-link">Email Spam</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/spamSMS" class="nav-link">Message Spam</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/contactus" class="nav-link">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout">
+                        <button class="btn btn-outline-light btn-lg mx-2">Logout</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Navbar ends-->
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="form col-md" id="form1">
+            <h2>SPAM EMAIL DETECTION</h2>
+            <br>
+
+            <!-- Email Spam Form -->
+            <form method="POST" action="{{ url_for('emailSpam') }}">
+                <!-- Email Body Input -->
+                <div class="form-group">
+                    <textarea class="form-control" name="body" id="body" rows="5" placeholder="Enter Email Body">{{ email_body }}</textarea>
+                </div>
+
+                <!-- Submit Body Button -->
+                <div class="form-group">
+                    <button class="btn btn-primary" value="emailSpam" type="submit" name="manualSubmit">Submit</button>
+                </div>
+
+                <!-- Fetch Gmail Button -->
+                <!-- <div class="form-group">
+                    <button class="btn btn-secondary" data-toggle="modal" data-target="#gmailModal">Enter the Gmail Recent message</button>
+                </div> -->
+            </form>
+
+            <br>
+
+            <!-- Display Prediction Result -->
+            {% if x %}
+                {% if x == 'spam' %}
+                    <div class="alert alert-danger">
+                        <strong>{{ x | capitalize }}</strong> detected! Please avoid clicking on any links included in this email.
+                    </div>
+                {% elif x == 'ham' %}
+                    <div class="alert alert-success">
+                        The email body is safe and classified as <strong>{{ x | capitalize }}</strong>. No suspicious links detected.
+                    </div>
+                {% endif %}
+            {% endif %}
+
+        </div>
+    </div>
+    <br>
+    <!-- Button to trigger modal -->
+<div class="form-group">
+    <button class="btn btn-secondary" data-toggle="modal" data-target="#gmailModal">Enter the Gmail Recent message</button>
+</div>
+
+</div>
+
+
+<!-- Gmail Login Modal -->
+<div class="modal fade" id="gmailModal" tabindex="-1" role="dialog" aria-labelledby="gmailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="gmailModalLabel">
+                    <i class="fas fa-envelope"></i> Gmail Login
+                </h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="gmailLoginForm" method="POST" action="{{ url_for('emailSpam') }}">
+                    <div class="form-group">
+                        <label for="gmailAddress">
+                            <i class="fas fa-at"></i> Email Address
+                        </label>
+                        <input type="email" class="form-control rounded-pill" id="gmailAddress" name="gmailAddress" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gmailPassword">
+                            <i class="fas fa-lock"></i> App Password
+                        </label>
+                        <input type="password" class="form-control rounded-pill" id="gmailPassword" name="gmailPassword" placeholder="Enter app password" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success btn-block rounded-pill">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

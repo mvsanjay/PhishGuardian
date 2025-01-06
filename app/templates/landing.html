@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PhishGuardian</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body class=" vh-100 over home">
+    
+
+<navbar-expand-lg class="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
+    <div class="container font-monospace">
+        <a href="/" class="navbar-brand text-warning">PhishGuardian</a>
+        <!-- For smaller screens -->
+        <button 
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navmenu"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>         
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">URLPhishing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">EmailSpam</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">MessageSpam</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">ContactUS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/login">
+                        <button class="btn btn-outline-light btn-lg mx-2">Login</button>
+                    </a> 
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</navbar-expand-lg>
+<!-- Navbar ends-->
+
+
+<!-- Home Section Starts -->
+<section class="bg-transparent text-light px-5 text-center">
+    <div class="container mt-5 p-5 ">
+
+        <div class="p-5">
+            <div class="font-monospace m-5 h1 size">Welcome to <span class="text-warning">PhishGuardian</span>!</div>
+            <h3 class="font-monospace mt-5">This website helps you to detect and prevent Phishing websites by using ML Algorithm</h3>
+            <div class="m-5">
+                <a href="#services">
+                    <button class="btn btn-outline-light btn-lg m-5">Know More About Our Services</button>
+                </a> 
+            </div>
+        </div>
+    </div>
+    
+</section>
+<!-- Home Section Ends -->
+
+
+
+
+<!-- Types section start -->
+<section id="services" class="bg-dark text-light">
+    <div class="container font-monospace mt-3">
+
+      <div class="row">
+
+        <div class="col-lg-4 offset-lg-4">
+          <div class="section-header">
+            <h1 class="font-monospace text-center mt-3 pt-4 pb-5">Our Services</h1>
+            <span class="section-divider"></span>
+          </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6" style="padding-bottom: 50px;">
+                <h3 >URL Phishing Detection</h3>
+                <p class="descript">URL phishing detection involves identifying and mitigating deceptive web addresses designed to trick users into divulging sensitive information or downloading malicious content. This process typically employs automated systems that analyze URLs for suspicious patterns, such as misleading domain names or unexpected redirects. Advanced techniques include examining URL structure, checking domain reputation, and comparing URLs against known phishing databases. Vigilance in recognizing these fraudulent URLs is crucial for safeguarding personal and organizational security, as phishing attacks continue to evolve in sophistication and prevalence across digital platforms.</p>
+            </div>
+            <div class="col-lg-4 col-md-6" style="padding-bottom: 50px;">
+                <h3>Spam Email Detection</h3>
+                <p class="descript">Spam email detection is a critical aspect of email security aimed at identifying and filtering out unsolicited and potentially harmful messages. Various techniques are used to detect spam, including content analysis, sender reputation checks, and behavioral analysis. Content analysis examines email content for typical spam characteristics like misleading subject lines, excessive use of capital letters, or suspicious links. Sender reputation checks assess the trustworthiness of the sender's domain and IP address based on past behavior. Behavioral analysis monitors email traffic patterns to detect anomalies that might indicate spam campaigns. Effective spam email detection helps protect users from phishing attempts, malware distribution, and other cyber threats, ensuring safer and more secure communication environments.</p>
+           </div>
+            <div class="col-lg-4 col-md-6" style="padding-bottom: 50px;">
+                <h3>Spam SMS Detection</h3>
+                <p class="descript">Spam SMS detection involves identifying and preventing unwanted and potentially malicious text messages sent to mobile devices. Similar to email spam detection, this process utilizes various techniques to filter out illegitimate messages and protect users from scams and fraudulent activities. These techniques include analyzing message content for typical spam indicators such as unusual URLs, misspellings, or offers that seem too good to be true. Additionally, sender reputation checks and behavioral analysis are employed to assess the credibility of the sender and detect patterns associated with spam campaigns. Effective spam SMS detection is crucial in maintaining user trust, safeguarding personal information, and ensuring a secure mobile communication environment.</p>
+            </div>
+         </div>
+
+        
+
+    </div>
+</section>

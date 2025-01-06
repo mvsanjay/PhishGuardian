@@ -1,0 +1,10 @@
+# Ignore Python cache files 
+__pycache__/ 
+*.pyc 
+# Ignore Jupyter notebook checkpoints 
+.ipynb_checkpoints/ 
+# Ignore sensitive and temporary files 
+app/client_secret.json 
+# Ignore model and pickle files 
+*.pkl 
+*.joblib 
